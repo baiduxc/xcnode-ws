@@ -1,39 +1,535 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <title>恭喜，站点创建成功！</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>不能说的秘密 - 永恒的旋律</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .container {
-            width: 60%;
-            margin: 10% auto 0;
-            background-color: #f0f0f0;
-            padding: 2% 5%;
-            border-radius: 10px
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Ma+Shan+Zheng&display=swap');
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
         }
-
-        ul {
-            padding-left: 20px;
+        
+        .hero-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-
-            ul li {
-                line-height: 2.3
-            }
-
-        a {
-            color: #20a53a
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .music-note {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>恭喜, 站点创建成功！</h1>
-        <h3>这是默认index.html，本页面由系统自动生成</h3>
-        <ul>
-            <li>本页面在FTP根目录下的index.html</li>
-            <li>您可以修改、删除或覆盖本页面</li>
-            <li>FTP相关信息，请到“面板系统后台 > FTP” 查看</li>
-        </ul>
-    </div>
+<body class="bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900 text-white">
+    
+    <!-- 导航栏 -->
+    <nav class="fixed w-full bg-black/30 backdrop-blur-md z-50 border-b border-white/10">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-music text-purple-400 text-2xl music-note"></i>
+                    <span class="text-2xl font-bold hero-title">不能说的秘密</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-purple-400 transition"><i class="fas fa-home mr-2"></i>首页</a>
+                    <a href="#movie" class="hover:text-purple-400 transition"><i class="fas fa-film mr-2"></i>电影</a>
+                    <a href="#album" class="hover:text-purple-400 transition"><i class="fas fa-compact-disc mr-2"></i>专辑</a>
+                    <a href="#songs" class="hover:text-purple-400 transition"><i class="fas fa-headphones mr-2"></i>歌曲</a>
+                    <a href="#gallery" class="hover:text-purple-400 transition"><i class="fas fa-images mr-2"></i>剧照</a>
+                </div>
+                <button class="md:hidden text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主横幅 -->
+    <section id="home" class="min-h-screen flex items-center justify-center parallax relative" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=1920');">
+        <div class="text-center fade-in px-4">
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 hero-title">不能说的秘密</h1>
+            <p class="text-xl md:text-2xl mb-8 text-purple-200">SECRET</p>
+            <p class="text-lg md:text-xl mb-12 max-w-2xl mx-auto">
+                穿越时空的琴键，诉说着不能说的秘密<br>
+                在音符中寻找永恒，在旋律里相遇
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="#movie" class="bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-full transition transform hover:scale-105">
+                    <i class="fas fa-play mr-2"></i>探索电影
+                </a>
+                <a href="#songs" class="bg-white/10 hover:bg-white/20 px-8 py-3 rounded-full backdrop-blur transition transform hover:scale-105">
+                    <i class="fas fa-music mr-2"></i>聆听音乐
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-3xl text-purple-400"></i>
+        </div>
+    </section>
+
+    <!-- 电影简介 -->
+    <section id="movie" class="py-20 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-5xl font-bold mb-4 hero-title">
+                    <i class="fas fa-film text-purple-400 mr-3"></i>电影故事
+                </h2>
+                <div class="w-24 h-1 bg-purple-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                <div class="card-hover rounded-2xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=800" alt="钢琴" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-6">
+                    <h3 class="text-3xl font-bold text-purple-300">穿越时空的爱恋</h3>
+                    <p class="text-lg leading-relaxed text-gray-300">
+                        《不能说的秘密》是周杰伦自编自导自演的首部电影作品,于2007年上映。影片讲述了叶湘伦和路小雨之间跨越时空的纯爱故事。
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-300">
+                        在音乐教室的琴键上,他们弹奏出了命运的乐章。一首《Secret》,连接了1979年与1999年两个时空,诉说着最美的初恋与最深的遗憾。
+                    </p>
+                    <div class="flex space-x-6 pt-4">
+                        <div class="text-center">
+                            <i class="fas fa-calendar-alt text-purple-400 text-2xl mb-2"></i>
+                            <p class="text-sm">上映年份</p>
+                            <p class="font-bold">2007</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-user-tie text-purple-400 text-2xl mb-2"></i>
+                            <p class="text-sm">导演</p>
+                            <p class="font-bold">周杰伦</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-star text-purple-400 text-2xl mb-2"></i>
+                            <p class="text-sm">评分</p>
+                            <p class="font-bold">7.8/10</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 专辑封面 -->
+    <section id="album" class="py-20 px-6 bg-black/30">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4 hero-title">
+                    <i class="fas fa-compact-disc text-purple-400 mr-3"></i>电影原声带
+                </h2>
+                <div class="w-24 h-1 bg-purple-500 mx-auto"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gradient-to-br from-purple-900/50 to-slate-900/50 backdrop-blur rounded-3xl p-8 shadow-2xl card-hover">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="rounded-2xl overflow-hidden shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1458560871784-56d23406c091?w=800" alt="专辑封面" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-4xl font-bold mb-4 hero-title">不能说的秘密</h3>
+                            <p class="text-xl text-purple-300 mb-6">电影原声带</p>
+                            <div class="space-y-3 text-gray-300">
+                                <p><i class="fas fa-user text-purple-400 mr-3"></i><strong>艺术家:</strong>周杰伦</p>
+                                <p><i class="fas fa-calendar text-purple-400 mr-3"></i><strong>发行时间:</strong>2007年8月</p>
+                                <p><i class="fas fa-music text-purple-400 mr-3"></i><strong>曲目数:</strong>14首</p>
+                                <p><i class="fas fa-building text-purple-400 mr-3"></i><strong>唱片公司:</strong>杰威尔音乐</p>
+                            </div>
+                            <div class="mt-8 flex space-x-4">
+                                <button class="bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-full transition">
+                                    <i class="fas fa-play mr-2"></i>播放全部
+                                </button>
+                                <button class="bg-white/10 hover:bg-white/20 px-6 py-3 rounded-full backdrop-blur transition">
+                                    <i class="fas fa-heart mr-2"></i>收藏
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 歌曲列表 -->
+    <section id="songs" class="py-20 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4 hero-title">
+                    <i class="fas fa-headphones text-purple-400 mr-3"></i>原声歌曲
+                </h2>
+                <div class="w-24 h-1 bg-purple-500 mx-auto"></div>
+            </div>
+            
+            <div class="max-w-5xl mx-auto grid gap-4">
+                <div class="bg-white/5 backdrop-blur rounded-xl p-6 hover:bg-white/10 transition card-hover border border-white/10">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-6 flex-1">
+                            <div class="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center text-2xl">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold mb-1">Secret</h4>
+                                <p class="text-gray-400">周杰伦 · 4:55</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button class="w-12 h-12 bg-purple-600 hover:bg-purple-700 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="w-12 h-12 hover:bg-white/10 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur rounded-xl p-6 hover:bg-white/10 transition card-hover border border-white/10">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-6 flex-1">
+                            <div class="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center text-2xl">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold mb-1">情人的眼泪</h4>
+                                <p class="text-gray-400">周杰伦 · 3:42</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button class="w-12 h-12 bg-purple-600 hover:bg-purple-700 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="w-12 h-12 hover:bg-white/10 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur rounded-xl p-6 hover:bg-white/10 transition card-hover border border-white/10">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-6 flex-1">
+                            <div class="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center text-2xl">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold mb-1">琴房</h4>
+                                <p class="text-gray-400">周杰伦 · 3:15</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button class="w-12 h-12 bg-purple-600 hover:bg-purple-700 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="w-12 h-12 hover:bg-white/10 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur rounded-xl p-6 hover:bg-white/10 transition card-hover border border-white/10">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-6 flex-1">
+                            <div class="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center text-2xl">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold mb-1">脚踏车</h4>
+                                <p class="text-gray-400">周杰伦 · 3:46</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button class="w-12 h-12 bg-purple-600 hover:bg-purple-700 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="w-12 h-12 hover:bg-white/10 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur rounded-xl p-6 hover:bg-white/10 transition card-hover border border-white/10">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-6 flex-1">
+                            <div class="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center text-2xl">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold mb-1">淡水海边</h4>
+                                <p class="text-gray-400">周杰伦 · 4:21</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button class="w-12 h-12 bg-purple-600 hover:bg-purple-700 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="w-12 h-12 hover:bg-white/10 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur rounded-xl p-6 hover:bg-white/10 transition card-hover border border-white/10">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-6 flex-1">
+                            <div class="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center text-2xl">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold mb-1">早操</h4>
+                                <p class="text-gray-400">周杰伦 · 2:18</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button class="w-12 h-12 bg-purple-600 hover:bg-purple-700 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="w-12 h-12 hover:bg-white/10 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur rounded-xl p-6 hover:bg-white/10 transition card-hover border border-white/10">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-6 flex-1">
+                            <div class="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center text-2xl">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold mb-1">斗琴</h4>
+                                <p class="text-gray-400">周杰伦 · 3:58</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button class="w-12 h-12 bg-purple-600 hover:bg-purple-700 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="w-12 h-12 hover:bg-white/10 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur rounded-xl p-6 hover:bg-white/10 transition card-hover border border-white/10">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-6 flex-1">
+                            <div class="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center text-2xl">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold mb-1">路小雨</h4>
+                                <p class="text-gray-400">周杰伦 · 3:33</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button class="w-12 h-12 bg-purple-600 hover:bg-purple-700 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="w-12 h-12 hover:bg-white/10 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 电影剧照画廊 -->
+    <section id="gallery" class="py-20 px-6 bg-black/30">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4 hero-title">
+                    <i class="fas fa-images text-purple-400 mr-3"></i>电影剧照
+                </h2>
+                <div class="w-24 h-1 bg-purple-500 mx-auto mb-6"></div>
+                <p class="text-gray-300 text-lg">那些定格的瞬间,永恒的回忆</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+                <div class="card-hover rounded-2xl overflow-hidden shadow-2xl group relative">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800" alt="琴房相遇" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">琴房初遇</h4>
+                            <p class="text-sm text-gray-300">命运的邂逅,从琴键开始</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-hover rounded-2xl overflow-hidden shadow-2xl group relative">
+                    <img src="https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?w=800" alt="钢琴演奏" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">琴键上的秘密</h4>
+                            <p class="text-sm text-gray-300">每个音符都藏着思念</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-hover rounded-2xl overflow-hidden shadow-2xl group relative">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800" alt="校园时光" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">纯真年代</h4>
+                            <p class="text-sm text-gray-300">青春里最美的相遇</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-hover rounded-2xl overflow-hidden shadow-2xl group relative">
+                    <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=800" alt="海边" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">淡水海边</h4>
+                            <p class="text-sm text-gray-300">海风中的约定</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-hover rounded-2xl overflow-hidden shadow-2xl group relative">
+                    <img src="https://images.unsplash.com/photo-1511376777868-611b54f68947?w=800" alt="音乐教室" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">音乐教室</h4>
+                            <p class="text-sm text-gray-300">时光停驻的地方</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-hover rounded-2xl overflow-hidden shadow-2xl group relative">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800" alt="回忆" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">穿越时空</h4>
+                            <p class="text-sm text-gray-300">为爱跨越二十年</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 经典台词 -->
+    <section class="py-20 px-6">
+        <div class="container mx-auto max-w-4xl">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4 hero-title">
+                    <i class="fas fa-quote-left text-purple-400 mr-3"></i>经典台词
+                </h2>
+                <div class="w-24 h-1 bg-purple-500 mx-auto"></div>
+            </div>
+            
+            <div class="space-y-8">
+                <div class="bg-gradient-to-r from-purple-900/30 to-transparent p-8 rounded-2xl border-l-4 border-purple-500">
+                    <p class="text-2xl mb-4 italic">"这是我们的秘密,你不能告诉任何人。"</p>
+                    <p class="text-purple-300">— 路小雨</p>
+                </div>
+                
+                <div class="bg-gradient-to-r from-purple-900/30 to-transparent p-8 rounded-2xl border-l-4 border-purple-500">
+                    <p class="text-2xl mb-4 italic">"我只能弹给你一个人听。"</p>
+                    <p class="text-purple-300">— 叶湘伦</p>
+                </div>
+                
+                <div class="bg-gradient-to-r from-purple-900/30 to-transparent p-8 rounded-2xl border-l-4 border-purple-500">
+                    <p class="text-2xl mb-4 italic">"我等你很久了。"</p>
+                    <p class="text-purple-300">— 路小雨</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-black/50 backdrop-blur py-12 px-6 border-t border-white/10">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-music text-purple-400 mr-2"></i>
+                        不能说的秘密
+                    </h4>
+                    <p class="text-gray-400">致敬经典,永恒的旋律</p>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">快速链接</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#movie" class="hover:text-purple-400 transition"><i class="fas fa-angle-right mr-2"></i>电影故事</a></li>
+                        <li><a href="#album" class="hover:text-purple-400 transition"><i class="fas fa-angle-right mr-2"></i>专辑信息</a></li>
+                        <li><a href="#songs" class="hover:text-purple-400 transition"><i class="fas fa-angle-right mr-2"></i>歌曲列表</a></li>
+                        <li><a href="#gallery" class="hover:text-purple-400 transition"><i class="fas fa-angle-right mr-2"></i>剧照画廊</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">社交媒体</h5>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-purple-600 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-weibo"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-purple-600 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-purple-600 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-purple-600 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">关于</h5>
+                    <p class="text-gray-400 text-sm">本网站是《不能说的秘密》粉丝主题网站,收录电影和音乐相关内容,致敬这部经典之作。</p>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 不能说的秘密主题网站. 所有图片来自Unsplash. <i class="fas fa-heart text-red-500"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 w-14 h-14 bg-purple-600 hover:bg-purple-700 rounded-full flex items-center justify-center shadow-2xl transition transform hover:scale-110 z-40">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
 </body>
 </html>
